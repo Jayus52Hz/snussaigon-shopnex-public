@@ -1,0 +1,158 @@
+export const importColumns = {
+    orders: [
+        {
+            name: "Order ID",
+            description: "The unique order ID used for tracking",
+            key: "orderId",
+            required: true,
+            suggested_mappings: ["Order Number", "ID", "Tracking ID"],
+        },
+        {
+            name: "User First Name",
+            description: "First name of the customer who placed the order",
+            key: "user.firstName",
+            suggested_mappings: ["Customer First Name", "First"],
+        },
+        {
+            name: "User Last Name",
+            description: "Last name of the customer who placed the order",
+            key: "user.lastName",
+            suggested_mappings: ["Customer Last Name", "Last"],
+        },
+        {
+            name: "User Email",
+            description: "Email address of the customer",
+            key: "user.email",
+            suggested_mappings: ["Email", "Contact Email"],
+        },
+        {
+            name: "Total Amount",
+            data_type: "number",
+            description: "Total amount paid for the order",
+            key: "totalAmount",
+            suggested_mappings: ["Total", "Amount", "Order Value"],
+        },
+        {
+            name: "Currency",
+            description: "Currency used in the transaction",
+            key: "currency",
+            suggested_mappings: ["Currency Code", "Payment Currency"],
+        },
+        {
+            name: "Payment Status",
+            description: "Status of the payment (e.g., paid, pending)",
+            key: "paymentStatus",
+            suggested_mappings: ["Payment", "Payment Status"],
+        },
+        {
+            name: "Order Status",
+            description: "Status of the order fulfillment process",
+            key: "orderStatus",
+            suggested_mappings: ["Order Progress", "Fulfillment Status"],
+        },
+        {
+            name: "Payment Gateway",
+            description: "The service used to process the payment",
+            key: "paymentGateway",
+            suggested_mappings: ["Gateway", "Payment Processor"],
+        },
+        {
+            name: "Payment Method",
+            description: "Payment method used (e.g., card, PayPal)",
+            key: "paymentMethod",
+            suggested_mappings: ["Card", "Method", "Payment Type"],
+        },
+        {
+            name: "Receipt URL",
+            description:
+                "URL to the payment receipt from the payment processor",
+            key: "receiptUrl",
+            suggested_mappings: ["Receipt", "Payment URL"],
+        },
+        {
+            name: "Created At",
+            data_type: "datetime",
+            description: "Date and time when the order was created",
+            key: "createdAt",
+            suggested_mappings: ["Created", "Ordered On", "Order Date"],
+        },
+        {
+            name: "Updated At",
+            data_type: "datetime",
+            description: "Last time the order was updated",
+            key: "updatedAt",
+            suggested_mappings: ["Updated", "Last Modified"],
+        },
+    ],
+    products: [
+        {
+            name: "Product Title",
+            description: "The title or name of the product",
+            key: "title",
+            required: true,
+            suggested_mappings: ["Name", "Title", "Product Name"],
+        },
+        {
+            name: "Product Handle",
+            description: "The URL-friendly identifier for the product",
+            key: "handle",
+            suggested_mappings: ["Slug", "URL Handle"],
+        },
+        {
+            name: "Currency",
+            description: "The currency code for pricing",
+            key: "currency",
+            suggested_mappings: ["Currency Code", "Price Currency"],
+        },
+        {
+            name: "Visible",
+            data_type: "boolean",
+            description: "Whether the product is visible on the storefront",
+            key: "visible",
+            suggested_mappings: ["Published", "Show", "Display"],
+        },
+        {
+            name: "Variant Price",
+            data_type: "number",
+            description: "The price of the first variant of the product",
+            key: "variants[0].price",
+            suggested_mappings: ["Price", "Cost", "Variant Price"],
+        },
+        {
+            name: "Variant Original Price",
+            data_type: "number",
+            description:
+                "The original price (before discount) of the first variant",
+            key: "variants[0].originalPrice",
+            suggested_mappings: ["Original Price", "Compare at Price"],
+        },
+        {
+            name: "Variant Image URL",
+            data_type: "string",
+            description: "URL to the primary image of the first variant",
+            key: "variants[0].imageUrl",
+            suggested_mappings: ["Image", "Image URL", "Main Image"],
+        },
+        {
+            name: "Custom Field - Package Name",
+            description:
+                "Value of the first custom field (e.g., plugin package)",
+            key: "customFields[0].value",
+            suggested_mappings: ["Package Name", "Plugin"],
+        },
+        {
+            name: "Created At",
+            data_type: "datetime",
+            description: "When the product was created",
+            key: "createdAt",
+            suggested_mappings: ["Created", "Created On", "Date Created"],
+        },
+        {
+            name: "Updated At",
+            data_type: "datetime",
+            description: "When the product was last updated",
+            key: "updatedAt",
+            suggested_mappings: ["Last Updated", "Updated On"],
+        },
+    ],
+};

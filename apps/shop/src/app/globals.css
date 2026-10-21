@@ -1,0 +1,535 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+@plugin 'tailwindcss-radix';
+@config "../../tailwind.config.js";
+@plugin '@tailwindcss/typography';
+
+/* Be Vietnam Pro — self-hosted via next/font/google (--font-vietnam),
+   applied site-wide via inheritance from body. Self-hosting avoids
+   relying on a runtime request to Google Fonts, which can fail/fallback
+   on restricted networks (notably some Windows setups) and break
+   Vietnamese diacritics rendering. */
+
+[role="button"],
+button {
+    cursor: pointer;
+}
+
+html {
+    /* Chỉ chặn overscroll trục dọc (bounce/pull-refresh). Để trục ngang mặc
+       định (auto) cho cử chỉ vuốt 2 ngón back/forward của trình duyệt. */
+    overscroll-behavior-y: none;
+}
+
+body {
+    font-family: var(--font-vietnam), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background-color: #ffffff;
+    color: #0d0d0d;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overscroll-behavior-y: none;
+}
+
+/* iOS Safari tự zoom khi focus vào input có font-size < 16px. Ép tối thiểu
+   16px cho mọi form control trên mobile để giữ nguyên kích thước khi bấm. */
+@media (max-width: 640px) {
+    input,
+    select,
+    textarea {
+        /* !important để thắng các class Tailwind text-sm/text-xs trên input */
+        font-size: 16px !important;
+    }
+}
+
+.font-display {
+    font-family: var(--font-vietnam), sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+}
+
+.font-body {
+    font-family: var(--font-vietnam), system-ui, sans-serif;
+}
+
+@theme {
+    /* Snus Sai Gon brand tokens — Saigon Black × Red palette */
+    /* Primary aliases used across components (kept stable for class names) */
+    --color-saigon-navy: #0d0d0d;   /* repurposed: Saigon Black (primary base) */
+    --color-saigon-lime: #d63d1e;   /* repurposed: Saigon Red (accent) */
+    /* Direct semantic names */
+    --color-saigon-base: #0d0d0d;   /* Primary base / Saigon Black */
+    --color-saigon-red: #d63d1e;    /* Accent / Saigon Red */
+    --color-saigon-red-hover: #b8311a;
+    --color-saigon-black: #0d0d0d;  /* Pure dark surface */
+    --color-saigon-surface: #1a1a1a;
+    --color-saigon-near-black: #1a1a1a;
+    --color-saigon-border-dark: #3a3a3a;
+    --color-saigon-grey: #6b6b6b;   /* Street Grey */
+    --color-saigon-bg: #ffffff;        /* Clean White — v2 */
+    --color-saigon-bg-warm: #fafaf7;   /* Off-white nhẹ cho section xen kẽ */
+    --color-saigon-bg-soft: #f5f5f2;   /* Soft surface (card img bg) */
+    --font-display: var(--font-vietnam), sans-serif;
+    --font-body: var(--font-vietnam), system-ui, sans-serif;
+    --breakpoint-xsmall: 320px;
+    --breakpoint-small: 1024px;
+    --breakpoint-medium: 1280px;
+    --breakpoint-large: 1440px;
+    --breakpoint-xlarge: 1680px;
+    --breakpoint-2xlarge: 1920px;
+    --color-grey-0: #ffffff;
+    --color-grey-5: #f9fafb;
+    --color-grey-10: #f3f4f6;
+    --color-grey-20: #e5e7eb;
+    --color-grey-30: #d1d5db;
+    --color-grey-40: #9ca3af;
+    --color-grey-50: #6b7280;
+    --color-grey-60: #4b5563;
+    --color-grey-70: #374151;
+    --color-grey-80: #1f2937;
+    --color-grey-90: #111827;
+    --radius-none: 0px;
+    --radius-soft: 2px;
+    --radius-base: 4px;
+    --radius-rounded: 8px;
+    --radius-large: 16px;
+    --radius-circle: 9999px;
+}
+
+@layer utilities {
+    /* Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .no-scrollbar::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+
+    /* Alias for mobile carousels */
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    input:focus ~ label,
+    input:not(:placeholder-shown) ~ label {
+        @apply -translate-y-2 text-[10px] leading-4 font-normal;
+    }
+
+    input:focus ~ label {
+        @apply left-0;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+        border: 1px solid #212121;
+        -webkit-text-fill-color: #212121;
+        -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+
+    input[type="search"]::-webkit-search-decoration,
+    input[type="search"]::-webkit-search-cancel-button,
+    input[type="search"]::-webkit-search-results-button,
+    input[type="search"]::-webkit-search-results-decoration {
+        -webkit-appearance: none;
+    }
+}
+
+@layer components {
+    /* Marquee animation */
+    @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+        animation: marquee 30s linear infinite;
+    }
+    .animate-marquee-slow {
+        animation: marquee 40s linear infinite;
+    }
+    .animate-marquee:hover,
+    .animate-marquee-slow:hover {
+        animation-play-state: paused;
+    }
+
+    /* Slide animations */
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-slide-down {
+        animation: slideDown 0.3s ease-out;
+    }
+    .animate-slide-up {
+        animation: slideUp 0.4s ease-out;
+    }
+    @keyframes hero-content-in {
+        from { opacity: 0; transform: translateY(32px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fade-up {
+        from { opacity: 0; transform: translateY(28px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes beam {
+        0%, 100% { opacity: 0; }
+        50% { opacity: 0.15; }
+    }
+    @keyframes pulse-opacity {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 0.9; }
+    }
+
+    .content-container {
+        @apply max-w-[1440px] w-full mx-auto px-4 sm:px-6;
+    }
+
+    /* Product article rich content */
+    .article-prose h2 { font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #111; }
+    .article-prose h3 { font-size: 1.1rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.5rem; color: #222; }
+    .article-prose p { margin-bottom: 0.75rem; line-height: 1.7; color: #333; }
+    /* Text link màu xanh giống blog (prose-a:text-blue-600) */
+    .article-prose a { color: #2563eb; text-decoration: underline; }
+    .article-prose a:hover { color: #1e40af; }
+    .article-prose ul, .article-prose ol { margin-bottom: 0.75rem; padding-left: 1.25rem; }
+    .article-prose li { margin-bottom: 0.25rem; line-height: 1.6; color: #333; }
+    .article-prose img { max-width: 100%; height: auto; border-radius: 0.5rem; margin: 1rem 0; }
+    .article-prose table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+    .article-prose th { background: #f3f4f6; padding: 0.5rem 0.75rem; text-align: left; font-weight: 600; border: 1px solid #e5e7eb; }
+    .article-prose td { padding: 0.5rem 0.75rem; border: 1px solid #e5e7eb; }
+    .article-prose .feature-box { background-color: #ededed; border-radius: 0.75rem; padding: 1.25rem; margin-bottom: 1.25rem; }
+    .article-prose .feature-box h3 { margin-top: 0; }
+    .article-prose .feature-box ul { margin-bottom: 0; }
+    .article-prose .feature-box li { padding: 0.35rem 0; border-bottom: 1px solid #d4d4d4; }
+    .article-prose .feature-box li:last-child { border-bottom: none; }
+
+    /* Article collapse/expand — SEO-safe: content always in DOM */
+    .article-collapse {
+        max-height: 300px;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+    }
+    .article-collapse.article-expanded {
+        max-height: 9999px;
+    }
+
+    /* Gradient fade overlay for collapsed article */
+    .article-gradient-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100px;
+        background: linear-gradient(to bottom, transparent, white);
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+
+    .contrast-btn {
+        @apply px-4 py-2 border border-black rounded-full hover:bg-black hover:text-white transition-colors duration-200 ease-in;
+    }
+
+    .text-xsmall-regular {
+        @apply text-[10px] leading-4 font-normal;
+    }
+
+    .text-small-regular {
+        @apply text-xs leading-5 font-normal;
+    }
+
+    .text-small-semi {
+        @apply text-xs leading-5 font-semibold;
+    }
+
+    .text-base-regular {
+        @apply text-sm leading-6 font-normal;
+    }
+
+    .text-base-semi {
+        @apply text-sm leading-6 font-semibold;
+    }
+
+    .text-large-regular {
+        @apply text-base leading-6 font-normal;
+    }
+
+    .text-large-semi {
+        @apply text-base leading-6 font-semibold;
+    }
+
+    .text-xl-regular {
+        @apply text-2xl leading-[36px] font-normal;
+    }
+
+    .text-xl-semi {
+        @apply text-2xl leading-[36px] font-semibold;
+    }
+
+    .text-2xl-regular {
+        @apply text-[30px] leading-[48px] font-normal;
+    }
+
+    .text-2xl-semi {
+        @apply text-[30px] leading-[48px] font-semibold;
+    }
+
+    .text-3xl-regular {
+        @apply text-[32px] leading-[44px] font-normal;
+    }
+
+    .text-3xl-semi {
+        @apply text-[32px] leading-[44px] font-semibold;
+    }
+}
+
+@theme inline {
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+    --radius: 0.625rem;
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+    --primary: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0.708 0 0);
+    --chart-1: oklch(0.646 0.222 41.116);
+    --chart-2: oklch(0.6 0.118 184.704);
+    --chart-3: oklch(0.398 0.07 227.392);
+    --chart-4: oklch(0.828 0.189 84.429);
+    --chart-5: oklch(0.769 0.188 70.08);
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+    --card: oklch(0.205 0 0);
+    --card-foreground: oklch(0.985 0 0);
+    --popover: oklch(0.205 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+    --primary: oklch(0.922 0 0);
+    --primary-foreground: oklch(0.205 0 0);
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    --accent: oklch(0.269 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.556 0 0);
+    --chart-1: oklch(0.488 0.243 264.376);
+    --chart-2: oklch(0.696 0.17 162.48);
+    --chart-3: oklch(0.769 0.188 70.08);
+    --chart-4: oklch(0.627 0.265 303.9);
+    --chart-5: oklch(0.645 0.246 16.439);
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+/* ── Interaction states cho mọi button (toàn site) ─────────────────────────────
+   Hover (mờ nhẹ) · Press (scale 0.97) · Focus bàn phím (ring) · cursor đúng.
+   Scope vào button thật (không đụng text-link). Tôn trọng prefers-reduced-motion.
+   Lưu ý: button có hover/transform riêng (class Tailwind) vẫn ưu tiên do specificity
+   cao hơn → không phá thiết kế sẵn có, chỉ bổ sung feedback cho button chưa có. */
+@layer base {
+    button,
+    [role="button"],
+    input[type="button"],
+    input[type="submit"],
+    input[type="reset"] {
+        transition:
+            transform 0.12s ease,
+            opacity 0.15s ease,
+            background-color 0.15s ease,
+            color 0.15s ease,
+            box-shadow 0.15s ease,
+            filter 0.15s ease;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    button:not(:disabled):not([aria-disabled="true"]):not([aria-busy="true"]),
+    [role="button"]:not([aria-disabled="true"]),
+    input[type="button"]:not(:disabled),
+    input[type="submit"]:not(:disabled) {
+        cursor: pointer;
+    }
+
+    /* Hover — phản hồi nhẹ, không che hover-color sẵn có */
+    button:not(:disabled):not([aria-disabled="true"]):not([aria-busy="true"]):hover,
+    [role="button"]:not([aria-disabled="true"]):hover,
+    input[type="button"]:not(:disabled):hover,
+    input[type="submit"]:not(:disabled):hover {
+        opacity: 0.92;
+    }
+
+    /* Press — cảm giác được nhấn */
+    button:not(:disabled):not([aria-disabled="true"]):not([aria-busy="true"]):active,
+    [role="button"]:not([aria-disabled="true"]):active,
+    input[type="button"]:not(:disabled):active,
+    input[type="submit"]:not(:disabled):active {
+        transform: scale(0.97);
+    }
+
+    /* Disabled / loading — affordance rõ */
+    button:disabled,
+    button[aria-disabled="true"],
+    button[aria-busy="true"],
+    [role="button"][aria-disabled="true"] {
+        cursor: not-allowed;
+    }
+
+    /* Focus bàn phím (chỉ khi điều hướng bằng keyboard) */
+    a:focus-visible,
+    button:focus-visible,
+    [role="button"]:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    [tabindex]:focus-visible {
+        outline: 2px solid #2563eb;
+        outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        button,
+        [role="button"],
+        input[type="button"],
+        input[type="submit"],
+        input[type="reset"] {
+            transition:
+                opacity 0.15s ease,
+                background-color 0.15s ease,
+                color 0.15s ease;
+        }
+        button:active,
+        [role="button"]:active,
+        input[type="button"]:active,
+        input[type="submit"]:active {
+            transform: none;
+        }
+    }
+}
+
+/* ── Tap/press feedback cho LINK (a) ───────────────────────────────────────────
+   Card sản phẩm/bài viết, danh mục, CTA "View all…" là <a>/<Link> nên KHÔNG nằm
+   trong lớp interaction của button ở trên. Class .tap-press cho khách cảm giác
+   "vừa chạm" trên mobile (giảm rage-click khi trình duyệt đang chuyển trang).
+   touch-action: manipulation → bỏ delay 300ms; tap-highlight tắt để dùng scale. */
+@layer base {
+    .tap-press {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        transition:
+            transform 0.12s ease,
+            opacity 0.15s ease,
+            box-shadow 0.15s ease;
+    }
+    .tap-press:active {
+        transform: scale(0.97);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .tap-press {
+            transition: opacity 0.15s ease;
+        }
+        .tap-press:active {
+            transform: none;
+            opacity: 0.85;
+        }
+    }
+}

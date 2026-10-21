@@ -1,0 +1,53 @@
+{
+    "name": "@shopnex/payload-sdk",
+    "version": "3.1.7",
+    "description": "The unofficial Payload SDK taken from the Payload CMS repo",
+    "homepage": "https:/shopnex.ai",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/shopnex-ai/shopnex.git",
+        "directory": "plugins/payload-sdk"
+    },
+    "license": "MIT",
+    "author": "ShopNex.ai Arseniy <arseniy@shopnex.ai>",
+    "maintainers": [
+        {
+            "name": "ShopNex",
+            "email": "hi@shopnex.ai",
+            "url": "https://shopnex.ai"
+        }
+    ],
+    "type": "module",
+    "exports": {
+        ".": {
+            "import": "./dist/index.js",
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        }
+    },
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "pnpm copyfiles && pnpm build:types && pnpm build:swc",
+        "build:swc": "swc ./src -d ./dist --config-file .swcrc --strip-leading-paths",
+        "build:types": "tsc --emitDeclarationOnly --outDir dist",
+        "clean": "rimraf {dist,*.tsbuildinfo}",
+        "copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png,json}\" dist/",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "prepublishOnly": "pnpm clean && pnpm turbo build"
+    },
+    "peerDependencies": {
+        "payload": ">=3.0.0"
+    },
+    "dependencies": {
+        "qs-esm": "7.0.2",
+        "ts-essentials": "10.0.3"
+    },
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org/"
+    }
+}

@@ -1,0 +1,90 @@
+"use client";
+
+import { getTranslation } from "@payloadcms/translations";
+import {
+    PopupList,
+    useConfig,
+    useDocumentDrawer,
+    useTheme,
+    useTranslation,
+} from "@payloadcms/ui";
+import { CSVImporter } from "csv-import-react";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+
+import { importColumns } from "./importColumns";
+import useThemeEnforcer from "./useThemeEnforcer";
+
+const baseClass = "export-list-menu-item";
+
+const CSVImporterDynamic = dynamic(
+    () => import("csv-import-react").then((mod) => mod.CSVImporter),
+    {
+        ssr: false,
+    }
+);
+
+export const ImportListMenuItem = ({ collectionSlug, customColumns }: any) => {
+    const { getEntityConfig } = useConfig();
+    const { i18n } = useTranslation();
+    const [isOpen, setIsOpen] = useState(false);
+    const router = useRouter();
+    const { theme } = useTheme();
+    useThemeEnforcer(theme);
+    const {
+        config: {
+            routes: { api },
+            serverURL,
+        },
+    } = useConfig();
+
+    const currentCollectionConfig = getEntityConfig({ collectionSlug });
+
+    return (
+        <>
+            <PopupList.Button
+                className={baseClass}
+                onClick={() => setIsOpen(true)}
+            >
+                Import{" "}
+                {getTranslation(currentCollectionConfig.labels.plural, i18n)}
+            </PopupList.Button>
+            <CSVImporterDynamic
+                customStyles={{
+                    "border-radius": "var(--style-radius-m)",
+                    "color-background": "var(--external-colors-white)",
+                    "color-background-modal": "var(--external-colors-white)",
+                    "color-primary": "var(--color-success-500)",
+                    "color-primary-hover": "var(--color-success-600)",
+                    "font-size": "13px",
+                }}
+                darkMode={theme === "dark"}
+                modalCloseOnOutsideClick
+                modalIsOpen={isOpen}
+                modalOnCloseTriggered={() => setIsOpen(false)}
+                onComplete={async (data) => {
+                    const response = await fetch(
+                        `${serverURL}${api}/${collectionSlug}/import`,
+                        {
+                            body: JSON.stringify({
+                                collectionSlug,
+                                data,
+                            }),
+                            credentials: "include",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            method: "POST",
+                        }
+                    );
+                    router.refresh();
+                }}
+                template={{
+                    // @ts-ignore
+                    columns: customColumns || importColumns[collectionSlug],
+                }}
+            />
+        </>
+    );
+};

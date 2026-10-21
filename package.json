@@ -1,0 +1,81 @@
+{
+    "name": "shopnex-starter",
+    "version": "0.6.0",
+    "description": "Starter for building Shopify-like storefronts using Payload CMS",
+    "license": "MIT",
+    "type": "module",
+    "scripts": {
+        "dev": "turbo run dev --filter ./apps/simple-shop",
+        "dev:cms": "pnpm --filter ./apps/simple-shop dev",
+        "dev:shop": "pnpm --filter ./apps/shop dev",
+        "build": "turbo run build",
+        "lint": "turbo run lint",
+        "format": "prettier --write .",
+        "db:seed": "pnpm --filter ./apps/simple-shop db:seed",
+        "test:e2e": "pnpm exec playwright test"
+    },
+    "dependencies": {
+        "@shopnex/types": "workspace:^",
+        "dotenv": "^17.2.1",
+        "lucide-react": "^0.541.0",
+        "next": "15.5.12"
+    },
+    "devDependencies": {
+        "@changesets/cli": "2.27.10",
+        "@eslint/eslintrc": "^3.2.0",
+        "@payloadcms/eslint-config": "^3.28.0",
+        "@playwright/test": "^1.55.1",
+        "@swc/cli": "^0.7.8",
+        "@types/jsdom": "^21.1.7",
+        "@types/lodash": "^4.17.16",
+        "@types/node": "^22.5.4",
+        "@types/react": "19.0.7",
+        "@types/react-dom": "19.0.3",
+        "autoprefixer": "^10.4.20",
+        "copyfiles": "^2.4.1",
+        "cross-env": "^7.0.3",
+        "eslint": "^9.16.0",
+        "eslint-config-next": "15.5.12",
+        "postcss": "^8.5.3",
+        "prettier": "^3.4.2",
+        "rimraf": "^6.0.1",
+        "tailwindcss": "^4.0.9",
+        "turbo": "^2.5.4",
+        "typescript": "5.7.3"
+    },
+    "engines": {
+        "node": "^18.20.2 || >=20.9.0",
+        "pnpm": "^9 || ^10"
+    },
+    "packageManager": "pnpm@10.7.1",
+    "pnpm": {
+        "onlyBuiltDependencies": [
+            "sharp",
+            "@swc/core",
+            "@tailwindcss/oxide",
+            "esbuild",
+            "isolated-vm",
+            "oxc-resolver",
+            "unrs-resolver"
+        ],
+        "overrides": {
+            "sharp": "0.34.4",
+            "tar-fs": "^3.0.9",
+            "esbuild": "^0.25.0",
+            "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.2/xlsx-0.20.2.tgz",
+            "react": "19.1.0",
+            "react-dom": "19.1.0",
+            "@types/react": "19.1.0",
+            "@types/react-dom": "19.1.0",
+            "lodash": "4.17.23",
+            "@isaacs/brace-expansion": "^5.0.1",
+            "qs": "^6.14.1",
+            "tar": "^7.5.9",
+            "axios": "^1.13.5",
+            "playwright": "^1.55.1",
+            "@eslint/plugin-kit": "^0.3.4",
+            "node-fetch": "^2.6.7",
+            "tmp": "^0.2.4"
+        }
+    }
+}
