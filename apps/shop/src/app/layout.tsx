@@ -20,6 +20,7 @@ const beVietnamPro = Be_Vietnam_Pro({
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://snussaigon.com";
+const CHAT_WIDGET_SRC = process.env.NEXT_PUBLIC_CHAT_WIDGET_SRC;
 
 export async function generateMetadata(): Promise<Metadata> {
     const settings = await getStoreSettings();
@@ -115,6 +116,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         title="gtm-noscript"
                     />
                 </noscript>
+                {CHAT_WIDGET_SRC ? (
+                    <Script
+                        id="snus-chat"
+                        src={CHAT_WIDGET_SRC}
+                        strategy="afterInteractive"
+                        data-launcher="off"
+                        data-lang={locale === "en" ? "en" : "vi"}
+                    />
+                ) : null}
             </body>
         </html>
     );

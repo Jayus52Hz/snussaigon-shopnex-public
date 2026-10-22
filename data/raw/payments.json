@@ -1,0 +1,74 @@
+[
+  {
+    "id": 3,
+    "name": "In-Store Payment",
+    "enabled": false,
+    "providers": [
+      {
+        "id": "69f761d1fef2546ce92f98a4",
+        "methodType": "inStore",
+        "instructions": "Visit our store to pay in person. You can pay with cash, card, or check at our location.",
+        "blockName": null,
+        "details": [],
+        "blockType": "manual"
+      }
+    ],
+    "updatedAt": "2026-05-03T14:55:13.907Z",
+    "createdAt": "2026-05-03T14:55:13.907Z"
+  },
+  {
+    "id": 2,
+    "name": "Bank Transfer",
+    "enabled": true,
+    "providers": [
+      {
+        "id": "69f761d1fef2546ce92f98a3",
+        "methodType": "bankTransfer",
+        "instructions": "Transfer the total amount to our bank account. Your order will be processed once payment is confirmed.",
+        "blockName": null,
+        "details": [
+          {
+            "id": "69f761d1fef2546ce92f989f",
+            "label": "Bank Name",
+            "value": "First National Bank"
+          },
+          {
+            "id": "69f761d1fef2546ce92f98a0",
+            "label": "Account Number",
+            "value": "1234567890"
+          },
+          {
+            "id": "69f761d1fef2546ce92f98a1",
+            "label": "Routing Number",
+            "value": "021000021"
+          },
+          {
+            "id": "69f761d1fef2546ce92f98a2",
+            "label": "Account Holder",
+            "value": "ShopNex LLC"
+          }
+        ],
+        "blockType": "manual"
+      }
+    ],
+    "updatedAt": "2026-05-03T14:55:13.882Z",
+    "createdAt": "2026-05-03T14:55:13.882Z"
+  },
+  {
+    "id": 1,
+    "name": "Cash on Delivery",
+    "enabled": true,
+    "providers": [
+      {
+        "id": "69f761d1fef2546ce92f989e",
+        "methodType": "cod",
+        "instructions": "Pay with cash when your order is delivered to your doorstep. Our delivery partner will collect the payment upon delivery.",
+        "blockName": null,
+        "details": [],
+        "blockType": "manual"
+      }
+    ],
+    "updatedAt": "2026-05-03T14:55:13.852Z",
+    "createdAt": "2026-05-03T14:55:13.852Z"
+  }
+]

@@ -1,0 +1,101 @@
+[
+  {
+    "id": 10,
+    "question": "Các thương hiệu nicotine pouch phổ biến nhất tại Việt Nam?",
+    "question_en": "Most popular nicotine pouch brands in Vietnam?",
+    "answer": "Các thương hiệu bán chạy nhất tại SnusSaigon: CUBA (White, Ninja, Black), ZYN, VELO, Pablo, LOOP, Killa. Trong đó CUBA chiếm 40% thị phần nhờ giá tốt và đa dạng nồng độ. ZYN và VELO được ưa chuộng bởi người nước ngoài tại Việt Nam.",
+    "answer_en": "Best-selling brands at SnusSaigon: CUBA (White, Ninja, Black), ZYN, VELO, Pablo, LOOP, Killa. CUBA holds 40% market share due to good pricing and diverse strengths. ZYN and VELO are popular among expats in Vietnam.",
+    "sortOrder": 9,
+    "location": null,
+    "updatedAt": "2026-05-06T00:47:14.000Z",
+    "createdAt": "2026-05-06T00:47:14.000Z"
+  },
+  {
+    "id": 8,
+    "question": "Nicotine pouch có an toàn không? Có tác dụng phụ không?",
+    "question_en": "Are nicotine pouches safe? Any side effects?",
+    "answer": "Nicotine pouch không chứa thuốc lá nên AN TOÀN HƠN thuốc lá truyền thống và snus — không gây ung thư do đốt cháy, không hại phổi. TUY NHIÊN, nicotine là chất gây nghiện. Tác dụng phụ có thể gồm: nóng rát nướu (tạm thời), chóng mặt nhẹ (khi dùng liều cao), buồn nôn (nếu nuốt dịch). KHÔNG dành cho người dưới 18 tuổi, phụ nữ mang thai hoặc người có bệnh tim mạch.",
+    "answer_en": "Nicotine pouches contain NO tobacco, making them SAFER than traditional cigarettes and snus — no cancer from combustion, no lung damage. HOWEVER, nicotine is addictive. Side effects may include: temporary gum irritation, mild dizziness (high dose), nausea (if swallowed). NOT for under 18s, pregnant women, or those with cardiovascular conditions.",
+    "sortOrder": 7,
+    "location": null,
+    "updatedAt": "2026-05-06T00:47:14.000Z",
+    "createdAt": "2026-05-06T00:47:14.000Z"
+  },
+  {
+    "id": 7,
+    "question": "Chính sách đổi trả và hoàn tiền như thế nào?",
+    "question_en": "What is your return and refund policy?",
+    "answer": "SnusSaigon cam kết HOÀN TIỀN 200% nếu phát hiện hàng giả, hàng nhái. Đổi trả miễn phí trong 7 ngày nếu sản phẩm bị lỗi, hư hỏng hoặc không đúng mô tả. Đổi 1-1 nếu sản phẩm bị khô hoặc hết hạn trong vòng 7 ngày kể từ ngày mua.",
+    "answer_en": "SnusSaigon guarantees a 200% REFUND if counterfeit products are detected. Free returns within 7 days for defective, damaged, or incorrect items. 1-for-1 exchange if the product is dry or expired within 7 days of purchase.",
+    "sortOrder": 6,
+    "location": null,
+    "updatedAt": "2026-05-06T00:47:14.000Z",
+    "createdAt": "2026-05-06T00:47:14.000Z"
+  },
+  {
+    "id": 5,
+    "question": "Giá nicotine pouch bao nhiêu?",
+    "question_en": "How much do nicotine pouches cost?",
+    "answer": "Giá nicotine pouch tại SnusSaigon dao động từ 50.000đ đến 300.000đ/hộp tùy thương hiệu và nồng độ. CUBA giá từ 220.000đ, VELO từ 180.000đ, ZYN từ 160.000đ, Pablo từ 220.000đ. Mua combo từ 5 hộp được giảm giá và free ship nội thành.",
+    "answer_en": "Nicotine pouch prices at SnusSaigon range from 50,000₫ to 300,000₫ per can depending on brand and strength. CUBA from 220,000₫, VELO from 180,000₫, ZYN from 160,000₫, Pablo from 220,000₫. Buy combos of 5+ for discounts and free city delivery.",
+    "sortOrder": 4,
+    "location": null,
+    "updatedAt": "2026-05-06T00:47:14.000Z",
+    "createdAt": "2026-05-06T00:47:14.000Z"
+  },
+  {
+    "id": 4,
+    "question": "Làm sao để chọn nồng độ nicotine phù hợp?",
+    "question_en": "How to choose the right nicotine strength?",
+    "answer": "Người mới bắt đầu: 3-6mg/pouch (EGP, VELO nhẹ). Người dùng trung bình: 7-16mg/pouch (CUBA White, ZYN, LOOP). Người dùng có kinh nghiệm: 17-35mg/pouch (Pablo, CUBA Ninja). Dân chơi chuyên nghiệp: 43mg+ (CUBA Black, Siberia, Iceberg). Nếu bạn mới dùng, hãy bắt đầu với nồng độ thấp nhất!",
+    "answer_en": "Beginners: 3-6mg/pouch (EGP, mild VELO). Intermediate: 7-16mg/pouch (CUBA White, ZYN, LOOP). Experienced: 17-35mg/pouch (Pablo, CUBA Ninja). Expert: 43mg+ (CUBA Black, Siberia, Iceberg). If you are new, start with the lowest strength!",
+    "sortOrder": 3,
+    "location": null,
+    "updatedAt": "2026-05-06T00:47:14.000Z",
+    "createdAt": "2026-05-06T00:47:14.000Z"
+  },
+  {
+    "id": 2,
+    "question": "Snus và nicotine pouch khác nhau thế nào?",
+    "question_en": "What is the difference between snus and nicotine pouches?",
+    "answer": "Snus truyền thống CHỨA thuốc lá thật (như General, Siberia, Oden's). Nicotine pouch (như ZYN, VELO, CUBA) hoàn toàn KHÔNG chứa thuốc lá — chỉ chứa nicotine tổng hợp và sợi thực vật. SnusSaigon chuyên phân phối nicotine pouch không thuốc lá, an toàn và hợp pháp hơn.",
+    "answer_en": "Traditional snus CONTAINS real tobacco (e.g., General, Siberia). Nicotine pouches (e.g., ZYN, VELO, CUBA) are completely TOBACCO-FREE — only synthetic nicotine and plant fiber. SnusSaigon specializes in tobacco-free nicotine pouches, which are safer and more widely accepted.",
+    "sortOrder": 1,
+    "location": null,
+    "updatedAt": "2026-05-06T00:47:14.000Z",
+    "createdAt": "2026-05-06T00:47:14.000Z"
+  },
+  {
+    "id": 1,
+    "question": "Nicotine pouch là gì?",
+    "question_en": "What is a nicotine pouch?",
+    "answer": "Nicotine pouch (còn gọi là white snus, nicopod) là túi nhỏ chứa nicotine tổng hợp, sợi thực vật và hương liệu — hoàn toàn KHÔNG chứa thuốc lá. Sản phẩm được đặt giữa môi và nướu, giải phóng nicotine từ từ mà không cần đốt cháy, không khói, không mùi, không ố răng.",
+    "answer_en": "A nicotine pouch (also known as white snus or nicopod) is a small pouch containing synthetic nicotine, plant-based fiber, and flavoring — completely TOBACCO-FREE. It is placed between the lip and gum, releasing nicotine gradually without combustion, smoke, odor, or teeth staining.",
+    "sortOrder": 0,
+    "location": null,
+    "updatedAt": "2026-05-06T00:47:14.000Z",
+    "createdAt": "2026-05-06T00:47:14.000Z"
+  },
+  {
+    "id": 6,
+    "question": "Giao hàng như thế nào? Có giao trong ngày không?",
+    "question_en": "How does delivery work? Same-day available?",
+    "answer": "CÓ! Snus Sai Gon giao hàng trong ngày nội thành TP.HCM (Quận 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, Bình Thạnh, Phú Nhuận, Gò Vấp, Tân Bình). Giao hàng toàn quốc qua COD, nhận hàng kiểm tra mới thanh toán. Đóng gói kín đáo, bảo mật thông tin.",
+    "answer_en": "YES! Snus Sai Gon offers same-day delivery within HCMC (Districts 1-8, 10-11, Binh Thanh, Phu Nhuan, Go Vap, Tan Binh). Nationwide COD delivery — inspect before payment. Discreet packaging guaranteed.",
+    "sortOrder": 5,
+    "location": null,
+    "updatedAt": "2026-10-20T11:56:20.320Z",
+    "createdAt": "2026-05-06T00:47:14.000Z"
+  },
+  {
+    "id": 3,
+    "question": "Mua nicotine pouch chính hãng ở đâu tại TP.HCM?",
+    "question_en": "Where to buy authentic nicotine pouches in HCMC?",
+    "answer": "Snus Sai Gon là địa chỉ mua nicotine pouch chính hãng hàng đầu tại TP.HCM. Chúng tôi giao hàng nhanh trong ngày nội thành, cam kết 100% chính hãng từ Thụy Điển. Đặt hàng qua website snussaigon.com hoặc liên hệ Zalo 0896 561 023.",
+    "answer_en": "Snus Sai Gon is the top destination for authentic nicotine pouches in HCMC. We offer same-day delivery within the city, 100% authentic products from Sweden. Order via snussaigon.com or contact us on Zalo at 0896 561 023.",
+    "sortOrder": 2,
+    "location": null,
+    "updatedAt": "2026-10-20T11:57:25.485Z",
+    "createdAt": "2026-05-06T00:47:14.000Z"
+  }
+]

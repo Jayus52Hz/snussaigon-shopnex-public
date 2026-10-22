@@ -2,6 +2,11 @@
 
 # dependencies
 node_modules
+.env
+.env.*
+!.env.chat.example
+__pycache__/
+*.py[cod]
 /.pnp
 .pnp.js
 .yarn/install-state.gz

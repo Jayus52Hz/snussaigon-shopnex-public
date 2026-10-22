@@ -1,0 +1,82 @@
+[
+  {
+    "id": 4,
+    "name": "Nhận tại cửa hàng",
+    "enabled": true,
+    "location": null,
+    "shippingProvider": [
+      {
+        "id": "69f761d1fef2546ce92f98a8",
+        "baseRate": 0,
+        "freeShippingMinOrder": null,
+        "estimatedDeliveryDays": "Trong ngày",
+        "notes": "Nhận đơn tại cửa hàng. Chúng tôi sẽ thông báo khi đơn hàng sẵn sàng.",
+        "notes_en": null,
+        "blockName": null,
+        "blockType": "custom-shipping"
+      }
+    ],
+    "updatedAt": "2026-05-03T14:55:13.970Z",
+    "createdAt": "2026-05-03T14:55:13.969Z"
+  },
+  {
+    "id": 3,
+    "name": "Giao hàng hỏa tốc",
+    "enabled": true,
+    "location": null,
+    "shippingProvider": [
+      {
+        "id": "69f761d1fef2546ce92f98a7",
+        "baseRate": -1,
+        "freeShippingMinOrder": null,
+        "estimatedDeliveryDays": "Trong ngày",
+        "notes": "Giao hàng trong ngày cho đơn đặt trước 14h. Không áp dụng cuối tuần.",
+        "notes_en": null,
+        "blockName": null,
+        "blockType": "custom-shipping"
+      }
+    ],
+    "updatedAt": "2026-06-22T02:58:26.586Z",
+    "createdAt": "2026-05-03T14:55:13.954Z"
+  },
+  {
+    "id": 2,
+    "name": "Giao hàng nhanh",
+    "enabled": true,
+    "location": null,
+    "shippingProvider": [
+      {
+        "id": "69f761d1fef2546ce92f98a6",
+        "baseRate": -1,
+        "freeShippingMinOrder": null,
+        "estimatedDeliveryDays": "1-2 ngày",
+        "notes": "Giao hàng nhanh trong 1-2 ngày nội thành TP.HCM.",
+        "notes_en": null,
+        "blockName": null,
+        "blockType": "custom-shipping"
+      }
+    ],
+    "updatedAt": "2026-06-22T02:58:12.640Z",
+    "createdAt": "2026-05-03T14:55:13.940Z"
+  },
+  {
+    "id": 1,
+    "name": "Giao hàng tiêu chuẩn",
+    "enabled": true,
+    "location": null,
+    "shippingProvider": [
+      {
+        "id": "69f761d1fef2546ce92f98a5",
+        "baseRate": -1,
+        "freeShippingMinOrder": null,
+        "estimatedDeliveryDays": "3-5 ngày",
+        "notes": "Giá chưa cộng phí ship nếu phát sinh.",
+        "notes_en": "Shipping fee not included.",
+        "blockName": null,
+        "blockType": "custom-shipping"
+      }
+    ],
+    "updatedAt": "2026-10-20T07:46:27.476Z",
+    "createdAt": "2026-05-03T14:55:13.922Z"
+  }
+]

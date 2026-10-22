@@ -1,0 +1,33 @@
+[
+  {
+    "id": 1,
+    "name": "Mua nhiều giảm nhiều",
+    "tiers": [
+      {
+        "id": "6ad6be944745b5f77c492c0e",
+        "minQuantity": 3,
+        "type": "shipping",
+        "value": null,
+        "maxAmount": 40000
+      },
+      {
+        "id": "6ad6be944745b5f77c492c0f",
+        "minQuantity": 5,
+        "type": "percentage",
+        "value": 5,
+        "maxAmount": null
+      },
+      {
+        "id": "6ad6be944745b5f77c492c10",
+        "minQuantity": 10,
+        "type": "percentage",
+        "value": 10,
+        "maxAmount": null
+      }
+    ],
+    "note": "Áp dụng trên tổng số lượng sản phẩm trong giỏ hàng, các khuyến mãi này không áp dụng đồng thời với nhau",
+    "enabled": true,
+    "updatedAt": "2026-10-20T01:06:28.897Z",
+    "createdAt": "2026-10-20T01:06:28.864Z"
+  }
+]

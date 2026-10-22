@@ -2,9 +2,16 @@
 
 import { useLocale } from "@/i18n/locale-provider";
 import { cn } from "@/utils";
-import { MessageCircle, X } from "lucide-react";
+import { MessageCircle, Sparkles, X } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
+
+declare global {
+    interface Window {
+        SnusChat?: { open: () => void };
+        __snusChatOpen?: boolean;
+    }
+}
 
 interface StickyAddToCartProps {
     productName?: string;
@@ -20,6 +27,7 @@ export default function StickyAddToCart(_props: StickyAddToCartProps) {
     const { locale } = useLocale();
     const [isOpen, setIsOpen] = useState(false);
     const isEn = locale === "en";
+    const chatEnabled = Boolean(process.env.NEXT_PUBLIC_CHAT_WIDGET_SRC);
 
     const channels = [
         {
@@ -64,6 +72,20 @@ export default function StickyAddToCart(_props: StickyAddToCartProps) {
             {/* Channel options */}
             {isOpen && (
                 <div className="flex flex-col gap-2 animate-slide-up">
+                    {chatEnabled ? (
+                        <button
+                            className="flex items-center gap-2 rounded-full bg-violet-600 px-4 py-2.5 text-sm font-medium text-white shadow-lg transition-colors hover:bg-violet-700"
+                            onClick={() => {
+                                setIsOpen(false);
+                                if (window.SnusChat) window.SnusChat.open();
+                                else window.__snusChatOpen = true;
+                            }}
+                            type="button"
+                        >
+                            <Sparkles className="h-5 w-5" />
+                            {isEn ? "AI assistant" : "Tư vấn AI"}
+                        </button>
+                    ) : null}
                     {channels.map((ch) => (
                         <a
                             className={cn(
