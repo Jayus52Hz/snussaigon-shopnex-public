@@ -17,6 +17,14 @@ const nextConfig: NextConfig = {
     // với mọi User-Agent. Khai báo option này THAY danh sách bot mặc định.
     // https://nextjs.org/docs/15/app/api-reference/config/next-config-js/htmlLimitedBots
     htmlLimitedBots: /.*/,
+    async rewrites() {
+        return [
+            {
+                source: "/chat/:path*",
+                destination: `${process.env.CHAT_SERVER_URL || "http://127.0.0.1:8787"}/chat/:path*`,
+            },
+        ];
+    },
     // skipTrailingSlashRedirect: true,
 };
 
